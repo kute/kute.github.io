@@ -4,17 +4,17 @@ markdown: redcarpet
 
 # 作者信息
 author: 
-  name: Anya Lin
-  email: lay.1010@hotmail.com
+  name: Kute Bai
+  email: kutekute00@gmail.com
   link: http://painterlin.com
   weibo: http://weibo.com/orangeissweet
-  github: http://github.com/lay1010
+  github: http://github.com/kute
   music: http://site.douban.com/linanya
   linkedin: https://www.linkedin.com/pub/anya-lin/81/91/232
 
 # 站点信息
-title: 林安亚的博客
-description: My personal blog
+title: 库特的博客
+description: Tiny blog for everything
 url: http://painterlin.com
 rss_url: /pages/atom.xml
 
@@ -32,7 +32,7 @@ disqus:
   shortname: painterlin
 
 # 主题设置，自动激活某个标签
-active: 读书
+active: 编程
 
 # 首页除了最新文章外显示分类
 cates: 
