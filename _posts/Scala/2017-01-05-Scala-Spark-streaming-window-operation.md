@@ -1,7 +1,7 @@
 ---
 published: true
 layout: post
-title: ssh连接以及sftp下载上传模块-sshconnctor
+title: 理解spark streaming window operation
 category: Scala
 tags: Spark
 time: 2017.01.06 14:22:00
