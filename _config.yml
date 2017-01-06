@@ -6,27 +6,27 @@ markdown: redcarpet
 author: 
   name: Kute Bai
   email: kutekute00@gmail.com
-  link: https://kute.github.io
+  link: http://kute.github.io
   github: http://github.com/kute
 
 # 站点信息
 title: 库特的博客
 description: Tiny blog for everything
-url: https://kute.github.io
+url: http://painterlin.com
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
 gavatar: /public/img/author.jpg
-favicon: /public/img/author.jpg
+favicon: /public/img/pylogo.png
 
 # google analytics 设置
 ga:
-  id: UA-89866321-1
-  url: kute.github.io
+  id: UA-54262064-1 
+  url: painterlin.com
 
 # disqus 设置
 disqus:
-  shortname: forwhy
+  shortname: painterlin
 
 # 主题设置，自动激活某个标签
 active: Linux
