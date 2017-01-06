@@ -1,3 +1,4 @@
+<!-- 左导航， 包括所有的分类（categories）以及标签tags, 归档archive，关于about -->
 <div class="col-md-3 col-lg-3 col-sm-13 col-xs-13 aside visible-md visible-lg">
   <div class="row">
     <div class="col-md-3 col-xs-3 aside1">
@@ -5,7 +6,7 @@
       <a class="pjaxlink" href="/"><img src="{{ site.gavatar }}" class="img-ronuded avatar" style="border-width:0px; border-color:#000"></a>
       <br><br><br><br>
       <ul class="nav nav-pills nav-stacked">
-        {% for category in site.categories %}     <!-- 这里是aside1的读书、生活、科研、技术、绘画-->
+        {% for category in site.categories %}
          <li><a href="#{{ category | first }}" data-toggle="tab">{{ category[0] }}</a></li>
         {% endfor %}
         <li><a href="#tags" data-toggle="tab">{{ site.locals.tags }}</a></li>  
@@ -25,6 +26,7 @@
         </table>
       </div>
     </div>
+      <!-- 下面是二级目录，也就是列出了每个左导航的子条目 -->
     <div class="col-md-9 col-xs-9 aside2">
       <div class="row">
         <div class="tab-content"> 
