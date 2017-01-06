@@ -25,11 +25,11 @@ favicon: /public/img/pylogo.png
 # google analytics 设置
 ga:
   id: UA-54262064-1 
-  url: painterlin.com
+  url: forwhy.cf
 
-# disqus 设置
-disqus:
-  shortname: painterlin
+## disqus 设置
+#disqus:
+#  shortname: painterlin
 
 # 主题设置，自动激活某个标签
 active: Linux
