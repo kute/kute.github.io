@@ -32,7 +32,7 @@ description:
 
 下面是流程图
 
-![图片链接](/public/img/posts/scala/spark-window-flow.jpg)
+![图片链接](/public/img/posts/scala/spark-window-flow.png)
 
 过程描述（可以对比控制台输出）：
 
