@@ -1,12 +1,14 @@
 ---
-layout: base
+layout: base_title
 ---
-<!-- not used -->
 <div class="row">
   <div class="col-md-13 aside3-title">
     <br>
     <h2 id="#identifier">{{ page.title }}</h2>
+    <br />
     {{ page.date | date:"%Y年%m月%d日" }}
+      <!-- tags  {{ page.tags }} -->
+      <!-- category  {{ page.category }} -->
   </div>
   <div class="col-md-13 aside3-content">
     <hr>
@@ -16,7 +18,6 @@ layout: base
     <hr>
     {% include comments.html %}
   </div>
-  <!-- 目录 -->
   <div id="content_table" style="position:fixed;right:20px;top:120px;display:none;">
     <div class="panel panel-success">
       <div class="panel-body" id="nav"></div>

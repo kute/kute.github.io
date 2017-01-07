@@ -5,9 +5,8 @@ title: 常用的Linux命令脚本
 category: Linux
 tags: Command
 time: 2017.01.05 14:22:00
-excerpt: 记录常用的Linux命令，主要偏向文本处理，服务器监控等。
 keywords: 
-description: 
+description: 记录常用的Linux命令，主要偏向文本处理，服务器监控等。
 
 ---
 

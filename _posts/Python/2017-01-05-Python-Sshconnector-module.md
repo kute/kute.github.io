@@ -5,9 +5,8 @@ title: ssh连接以及sftp下载上传模块-sshconnctor
 category: Python
 tags: ssh sftp
 time: 2017.01.05 14:22:00
-excerpt: 方便ssh连接以及sftp服务器日志下载
 keywords: 
-description: 
+description: 方便ssh连接以及sftp服务器日志下载
 
 ---
 
