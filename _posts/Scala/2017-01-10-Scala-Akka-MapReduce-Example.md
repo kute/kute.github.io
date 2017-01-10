@@ -12,7 +12,7 @@ description: 经典的mapreduce示例, 统计单词频次
 
 ## 直接上代码, 都有注释
 
-package com.kute.akka.mapreduce
+    package com.kute.akka.mapreduce
 
 
     /**
