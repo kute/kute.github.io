@@ -3,7 +3,7 @@ published: true
 layout: post
 title: Scala Akka MapReduce 示例
 category: Scala
-tags: Akka MapReduce
+tags: Scala Akka MapReduce
 time: 2017.01.10 10:40:00
 keywords: 
 description: 经典的mapreduce示例, 统计单词频次

@@ -3,7 +3,7 @@ published: true
 layout: post
 title: 多线程,多进程,协程 处理任务模块-Eventor
 category: Python
-tags: Coroutine Thread Process
+tags: Python Coroutine Thread Process
 time: 2017.01.05 14:22:00
 keywords: 
 description: 方便加快处理IO密集型的任务
