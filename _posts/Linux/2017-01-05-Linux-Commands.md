@@ -148,5 +148,24 @@ description: 记录常用的Linux命令，主要偏向文本处理，服务器�
     head -n 80 /dev/urandom | tr -dc 0-9a-zA-Z | head -c 20 # 字母大小写+数字的20位长度的随机数
     LC_CTYPE=C tr -dc A-Za-z0-9 < /dev/urandom | head -c 20 # mac版本下的方式
     sudo chown $(whoami) /usr/local/bin  # 更改 /usr/local/bin的所属用户
+    wc -l *.txt  # 统计txt文件的行数以及总行数
+    curl ip.cn  # 查看公网ip
+    curl ipinfo.io  # 查看公网ip
+    iostat -d -k 1 10  # 查看 磁盘设备，1s刷新一次，一共显示10次，单位是 k
+    iostat -x 2  # 查看IO扩展，2s刷新间隔
+    vmstat 2  # 2s刷新间隔，查看内存信息，-a 参数表示活动与非活动，-d 磁盘
+    cat /proc/meminfo # 内存信息
+    cat /proc/cpuinfo | grep "core id" | uniq | wc -l  # CPU 核数
+    df -h  # 显示磁盘分区大小
+    du -sh *.txt  # 显示所有txt文件大小
+    lsof | grep deleted # 查询未执行完成的删除命名（有时候就是因为这些命名导致机器内存CPU飙高）
+    sed -n '/2016-01-18 00:00:00/,/2016-01-21 18:00:00/p'  /stdout.log-042414.log  # 查看指定时间的日志内容
+    
+    ps -eo rss,pmem,pcpu,vsize,args |  sort -k 1 -r -n | less  # 按内存消耗降序查看进程
+    ps H -eo user,pid,ppid,tid,time,%cpu,cmd --sort=%cpu       # 按CPU消耗 升序查看进程
+    ps aux|grep java | grep -v grep | awk '{print $2}' | xargs kill -9  # 强杀有关java的进程
+    
+    getconf LONG_BIT  # 查看机器多少位
+    file /sbin/init   # 查看机器多少位
     
 
