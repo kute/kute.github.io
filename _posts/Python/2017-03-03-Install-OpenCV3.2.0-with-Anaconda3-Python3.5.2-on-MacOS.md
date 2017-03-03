@@ -41,8 +41,19 @@ description: 在macOS上为anaconda3(python3.5.2)安装OpenCV3
       -DBUILD_opencv_text=OFF \
       -DBUILD_opencv_tracking=OFF \
       -DBUILD_opencv_legacy=OFF ..
-    
-#### 4. 参考链接
+
+#### 4. 验证
+
+      kutedeMacBook-Pro:~ kute$ python
+      Python 3.5.2 |Anaconda custom (x86_64)| (default, Jul  2 2016, 17:52:12)
+      [GCC 4.2.1 Compatible Apple LLVM 4.2 (clang-425.0.28)] on darwin
+      Type "help", "copyright", "credits" or "license" for more information.
+      >>> import cv2
+      >>> cv2.__version__
+      '3.2.0-dev'
+      >>>
+
+#### 5. 参考链接
 
   1. [http://www.cnblogs.com/beer/p/5668620.html](http://www.cnblogs.com/beer/p/5668620.html)
 
