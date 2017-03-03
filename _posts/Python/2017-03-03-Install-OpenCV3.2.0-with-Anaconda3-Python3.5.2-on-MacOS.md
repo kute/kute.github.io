@@ -10,20 +10,20 @@ description: 在macOS上为anaconda3(python3.5.2)安装OpenCV3
 
 ---
 
-#### macOS system information
+#### 1. macOS system information
 
 1. macOS Sierra 10.12.3 
 2. python 版本: 3.5.2
 3. 要安装的opencv3版本: 3.2.0
 
   
-#### 说明
+#### 2. 说明
 
   安装的时候也是各种问题, 折腾了三四天呢, 主要是 各种依赖 和 library 路径问题, 也在`stackoverflow` 上查了很多资料, 也试过 `brew`和`conda`的安装方式, 都各种错误,依赖找不到,
 最后还是用源码编译的方式安装的, 下面贴出我的系统`cmake`命令以及一些参考文档,希望有用. (建议先看下 [http://www.cnblogs.com/beer/p/5668620.html](http://www.cnblogs.com/beer/p/5668620.html)此文章,注意里面的每个注意项,
 然后再结合自己的环境编译,在`stackoverflow上`查找解决问题)
   
-#### cmake 命令
+#### 3. cmake 命令
 
       cmake -DCMAKE_BUILD_TYPE=RELEASE \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
@@ -42,7 +42,7 @@ description: 在macOS上为anaconda3(python3.5.2)安装OpenCV3
       -DBUILD_opencv_tracking=OFF \
       -DBUILD_opencv_legacy=OFF ..
     
-#### 参考链接
+#### 4. 参考链接
 
   1. [http://www.cnblogs.com/beer/p/5668620.html](http://www.cnblogs.com/beer/p/5668620.html)
 
