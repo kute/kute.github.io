@@ -16,6 +16,7 @@ A curated list of softers in learning.
 
 - [Softers](#Softers)
     - [IDE](#IDE)
+    - [Data Science][Data Science]
 
 
 - - -
@@ -56,4 +57,11 @@ A curated list of softers in learning.
 * [TortoiseGit]()
 * [TortoiseSVN]()
 * [WampServer]()
+
+
+
+## Data Science
+
+* 数据分析统计.*
+
 * []()

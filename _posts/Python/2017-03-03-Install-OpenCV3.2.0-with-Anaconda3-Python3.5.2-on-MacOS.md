@@ -71,4 +71,5 @@ description: 在macOS上为anaconda3(python3.5.2)安装OpenCV3
   12. [https://github.com/opencv/opencv_contrib/issues](https://github.com/opencv/opencv_contrib/issues)
   
   
+  windows安装只需到[http:http://www.lfd.uci.edu/~gohlke/pythonlibs/#opencv](http://www.lfd.uci.edu/~gohlke/pythonlibs/#opencv)下载对应的版本然后pip安装即可。
   
