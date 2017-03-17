@@ -114,6 +114,7 @@ description: 记录常用的Linux命令，主要偏向文本处理，服务器�
 > （find / grep / sort / cut / awk / sed / uniq / tee / tr / diff / cmp / split / xargs/ echo/ cat/ tail/ head/ chmod/ chown）
 
     
+    cd -  # 返回此前的目录
     find . -name "*.txt"
     find . ! -name "*.txt" # 否定匹配
     find . -maxdepth 1 -name "*.txt" # 限制查找深度匹配
@@ -135,10 +136,12 @@ description: 记录常用的Linux命令，主要偏向文本处理，服务器�
     echo "a kjad9 akj23k 23j21jksd9u" | tr -d '{0-9}' # 删除指定集合的字符
     echo "a kjad9 akj23k 23j21jksd9u" | tr -d -c '{0-9}' # 删除指定集合的补集的字符
     echo "aaa   sd   eew   sdf    as" | tr -s ' ' # 压缩指定集合中的重复字符
+    cat geeks.txt | tr ':[space]:' '\t' > out.txt  # 将空格替换为Tab
     cat myfile | sort | uniq -c | sort -r | more # 统计每行出现的次数，倒序输出
     cat myfile | sort | uniq -d # 输出重复行
     tail -n +100 data.txt | more # 从100行开始查看data.txt文件
     filename = `mktemp`  # 创建临时文件
+    dd if=/dev/zero of=out.txt bs=1M count=2  # 创建特定大小的文件，这里创建 2M的文件并以零填充
     filedir = `mktemp -d` # 创建临时目录
     split -b 20k data.txt -d data_prefix # 将data.txt分隔为每个20k大小的文件,并以 数字后缀命名
     split -l 50000 data.txt data_prefix # 分隔文件，每个文件 50000 行
@@ -167,6 +170,8 @@ description: 记录常用的Linux命令，主要偏向文本处理，服务器�
     
     getconf LONG_BIT  # 查看机器多少位
     file /sbin/init   # 查看机器多少位
+    
+    ping www.baidu.com -c 5 -i 2  # -i 指定发送消息包时间间隔，-c 指定发送包的个数
     
     
 #### 10. 瑞士军刀 nc 命令
