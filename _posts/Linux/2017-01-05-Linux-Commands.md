@@ -173,6 +173,20 @@ description: 记录常用的Linux命令，主要偏向文本处理，服务器�
     
     ping www.baidu.com -c 5 -i 2  # -i 指定发送消息包时间间隔，-c 指定发送包的个数
     
+    # 清空文件
+    > myfile.txt  # 重定向null对象到文件
+    : > myfile.txt  # : 和true类似
+    true > myfile.txt
+    cat /dev/null > myfile.txt
+    cp /dev/null myfile.txt
+    dd if=/dev/null of=myfile.txt
+    echo "" > myfile.txt
+    echo -n "" > myfile.txt  # 使用 -n 参数 则不会有换行符
+    echo > myfile.txt
+    truncate -s 0 myfile.txt
+    
+    
+    
     
 #### 10. 瑞士军刀 nc 命令
 
