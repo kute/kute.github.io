@@ -30,6 +30,9 @@ A curated list of softers in learning.
 * [Sublimit Text]().
 * [VSCode]().
 * [Cmder]().
+* [AutoHotKey](https://autohotkey.com/).
+* [Launchy](http://www.launchy.net/).
+* [Listary](http://www.listary.com/).
 * [Beyond Compare]().
 * [Navicat Premium]() - for mysql, oracle, postgresql, sqlite, sql server
 * [有道云笔记]()
@@ -37,7 +40,7 @@ A curated list of softers in learning.
 * [XShell]()
 * [Putty]()
 * [jd-jui.exe]()
-* [Everything]() - for searching everything
+* [Everything](http://www.voidtools.com/) - for searching everything
 * [Pycharm]()
 * [hotsPlus]()
 * [Git Bash]()
