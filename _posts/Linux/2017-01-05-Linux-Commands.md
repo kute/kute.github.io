@@ -204,7 +204,7 @@ server2: 192.168.10.149
     nc -l 12368 > recieve.txt  # 在server2 上开启端口监听, 将消息保存为 recieve.txt文件
     nc 192.168.10.149 12368 < send.txt  # 在server1 连接, 输入流为 send.txt文件
     
-### 处理CSV文件命令  xsv
+### 11. 处理CSV文件命令  xsv
 
     xsv count word.csv  # 统计行,可以喝wc -l 比较下大文本数据所用的内存以及时间
     xsv xsv frequency word.csv --limit 5  # 频率统计
