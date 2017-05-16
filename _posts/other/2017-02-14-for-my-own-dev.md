@@ -30,6 +30,8 @@ A curated list of softers in learning.
 * [Sublimit Text]().
 * [VSCode]().
 * [Cmder]().
+* [Insomnia]().
+* [babun]().
 * [AutoHotKey](https://autohotkey.com/).
 * [Launchy](http://www.launchy.net/).
 * [Listary](http://www.listary.com/).
