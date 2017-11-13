@@ -185,6 +185,30 @@ description: 记录常用的Linux命令，主要偏向文本处理，服务器�
     echo > myfile.txt
     truncate -s 0 myfile.txt
     
+    # jvm info
+    
+   
+    jmap -histo:live pid | more  # 堆对象情况
+    jmap -dump:format=b,file=heap.dump pid # 导出堆文件
+    jmap –heap pid # 堆概要信息
+    jmap -finalizerinfo pid # 正在回收的对象信息
+    jmap -permstat pidK
+    jstat –class <pid> # 显示加载class的数量，及所占空间等信息
+    jstat -compiler <pid> # 显示VM实时编译的数量等信息
+    jstat -gc <pid> # 可以显示gc的信息，查看gc的次数，及时间
+    jstat -gccapacity <pid> # 可以显示，VM内存中三代（young,old,perm）对象的使用和占用大小
+    jstat -gcutil <pid> # 统计gc信息
+    jstat -gcnew <pid> # 年轻代对象的信息
+    jstat -gcnewcapacity<pid> # 年轻代对象的信息及其占用量
+    jstat -gcold <pid> # old代对象的信息
+    jstat -gcoldcapacity <pid> # old代对象的信息及其占用量
+    jstat -gcpermcapacity<pid> #  perm对象的信息及其占用量
+    jstat -printcompilation <pid> # 当前VM执行的信息
+    jhat
+    jstack
+    jinfo
+    jps
+    
     
     
     
