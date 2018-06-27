@@ -93,13 +93,30 @@ observer|不参与投票；只提供读服务
 
 zookeeper使用ACL来控制对znode节点的访问
 
-1、格式：scheme:id:permissions
+1、格式：`scheme:id:permissions`
 
-名称 | 说明
----|---
-scheme:id | world: 它下面只有一个id, 叫anyone, world:anyone代表任何人，zookeeper中对所有人有权限的结点就是属于world:anyone的。auth: 它不需要id, 只要是通过authentication的user都有权限（zookeeper支持通过kerberos来进行authencation, 也支持username/password形式的authentication)。digest: 它对应的id为username:BASE64(SHA1(password))，它需要先通过username:password形式的authentication。ip: 它对应的id为客户机的IP地址，设置的时候可以设置一个ip段，比如ip:192.168.1.0/16, 表示匹配前16个bit的IP段。super: 在这种scheme情况下，对应的id拥有超级权限，可以做任何事情(cdrwa)。
-permissions | CREATE(c): 创建权限，可以在在当前node下创建child node。DELETE(d): 删除权限，可以删除当前的node。READ(r): 读权限，可以获取当前node的数据，可以list当前node所有的child nodes。WRITE(w): 写权限，可以向当前node写数据。ADMIN(a): 管理权限，可以设置当前node的permission。
+<table>
+    <thead>
+        <tr>
+            <th>名称</th>
+            <th>说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>scheme:id</td>
+            <td>world: 它下面只有一个id, 叫anyone, world:anyone代表任何人，zookeeper中对所有人有权限的结点就是属于world:anyone的。auth: 它不需要id, 只要是通过authentication的user都有权限（zookeeper支持通过kerberos来进行authencation, 也支持username/password形式的authentication)。digest: 它对应的id为username:BASE64(SHA1(password))，它需要先通过username:password形式的authentication。ip: 它对应的id为客户机的IP地址，设置的时候可以设置一个ip段，比如ip:192.168.1.0/16, 表示匹配前16个bit的IP段。super: 在这种scheme情况下，对应的id拥有超级权限，可以做任何事情(cdrwa)。</td>
+        </tr>
+        <tr>
+            <td>permissions</td>
+            <td>CREATE(c): 创建权限，可以在在当前node下创建child node。DELETE(d): 删除权限，可以删除当前的node。READ(r): 读权限，可以获取当前node的数据，可以list当前node所有的child nodes。WRITE(w): 写权限，可以向当前node写数据。ADMIN(a): 管理权限，可以设置当前node的permission。</td>
+        </tr>
+    </tbody>
+</table>
+
+```bash
 setAcl /zookeeper/node1 world:anyone:cdrw
+```
 
 ### 工作模式（3种）
 
@@ -156,9 +173,9 @@ a. 独占锁（排他锁）：
 
 扩展：
 
-a. 分布式锁服务关键技术和常见解决方案
+a. [分布式锁服务关键技术和常见解决方案](https://cloud.tencent.com/developer/article/1005613)
 
-b. google chubby
+b. [google chubby](https://static.googleusercontent.com/media/research.google.com/zh-CN//archive/chubby-osdi06.pdf)
 
 #### 5. 集群管理
 
@@ -168,13 +185,13 @@ b. google chubby
 
 1、监控方式有两种
 
-a. 4字命令 
+a. [4字命令](http://zookeeper.apache.org/doc/r3.3.2/zookeeperAdmin.html#sc_zkCommands) 
 
 echo ruok | nc 127.0.0.1 5111
 
-nc unix command
+[nc unix command](https://www.computerhope.com/unix/nc.htm)
 
-b. JMX
+b. [JMX](http://zookeeper.apache.org/doc/r3.3.2/zookeeperJMX.html)
 
 c. JConsole
 
@@ -262,7 +279,7 @@ zookeeper特性：集群中只要有过半的机器是正常工作的，那么�
 
 5、zookeeper本身提供的API比较丑陋，推荐 http://curator.apache.org/
 
-6、bookkeeper 记录日志流的系统
+6、[bookkeeper](http://zookeeper.apache.org/doc/r3.4.12/bookkeeperStarted.html) 记录日志流的系统
 
  
 
