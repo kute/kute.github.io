@@ -285,8 +285,8 @@ zookeeper特性：集群中只要有过半的机器是正常工作的，那么�
 
 ### 参考：
 
-1、从paxos到Zookeeper分布式一致性原理与实践
+1、[从paxos到Zookeeper分布式一致性原理与实践](https://book.douban.com/subject/26292004/)
 
 2、http://zookeeper.apache.org/doc/r3.4.12/zookeeperAdmin.html
 
-3、Paxos算法
+3、[Paxos算法](https://en.wikipedia.org/wiki/Paxos_(computer_science))
