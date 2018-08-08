@@ -184,35 +184,38 @@ b. 单独设置某个方法的降级策略
     
 切面：
 
-    @Before("@annotation(com.kute.annotation.DubboConsumerBeforeInvoke)")
-    public void controllerPointcut(ProceedingJoinPoint proceedingJoinPoint) {
-        MethodInvocationProceedingJoinPoint methodInvocationProceedingJoinPoint =
-                (MethodInvocationProceedingJoinPoint) proceedingJoinPoint;
-        Method method = ((MethodSignature) methodInvocationProceedingJoinPoint.getSignature()).getMethod();
-    
-        DubboConsumerBeforeInvoke dubboConsumerBeforeInvoke = method.getAnnotation(DubboConsumerBeforeInvoke.class);
-    
-        if (!dubboConsumerBeforeInvoke.enabled()) return;
-    
-        Class[] serviceClassArray = dubboConsumerBeforeInvoke.serviceClazz();
-        String[] methodArray = dubboConsumerBeforeInvoke.method();
-    
-        if (serviceClassArray.length == 0 || serviceClassArray.length != methodArray.length) {
-            throw new IllegalArgumentException("Dubbo annotation DubboConsumerBeforeInvoke need parameter declare");
+    @Pointcut("@annotation(com.lianjia.sinan.qc.annotation.DubboConsumerBeforeInvoke)")
+    public void pointcut() {
+
+    }
+
+    @Before(value = "pointcut() && @annotation(invoke)")
+    public void consumerBeforeInvoke(JoinPoint joinPoint, DubboConsumerBeforeInvoke invoke) {
+
+        if (!invoke.enabled()) {
+            logger.warn("Dubbo consumerBeforeInvoke annotation[com.lianjia.sinan.qc.annotation.DubboConsumerBeforeInvoke] is not enabled");
+            return;
         }
-    
+
+        Class[] serviceClassArray = invoke.serviceClazz();
+        String[] methodArray = invoke.method();
+
+        if (serviceClassArray.length == 0 || serviceClassArray.length != methodArray.length) {
+            throw new IllegalArgumentException("Dubbo annotation[com.lianjia.sinan.qc.annotation.DubboConsumerBeforeInvoke] need parameter declare");
+        }
+
         int size = serviceClassArray.length;
-    
+
         // 对 要调用的每个 dubbo 方法 生成 唯一ID
         for (int i = 0; i < size; i++) {
             Class<?> serviceClass = serviceClassArray[i];
             String dubboMethod = methodArray[i];
-            String methodKey = getMethodKey(serviceClass, dubboMethod);
-    
+            String methodKey = KeyUtil.getMethodKey(serviceClass, dubboMethod);
+
             String uuid = UUID.randomUUID().toString();
-    
+            logger.info("Dubbo consumerBeforeInvoke method[{}] setAttachment in context:{}", methodKey, uuid);
             RpcContext.getContext().setAttachment(methodKey, uuid);
-    
+
         }
     }
      
@@ -232,48 +235,55 @@ b. 单独设置某个方法的降级策略
     @Inherited
     public @interface DubboProviderRetryCheck {
         // 根据业务评估 接口完成调用所需的时间
-        long timeOutMillis() default 3000;
+        long expiredMillis() default 3000;
     }
     
 切面：
 
-    @Around("@annotation(com.kute.annotation.DubboProviderRetryCheck)")
-    public Object controllerPointcut(ProceedingJoinPoint proceedingJoinPoint) {
-    
-        MethodInvocationProceedingJoinPoint methodInvocationProceedingJoinPoint =
-                (MethodInvocationProceedingJoinPoint) proceedingJoinPoint;
-        Method method = ((MethodSignature) methodInvocationProceedingJoinPoint.getSignature()).getMethod();
-    
-        DubboProviderRetryCheck providerRetryCheck = method.getAnnotation(DubboProviderRetryCheck.class);
-        Class<?> serviceClass = proceedingJoinPoint.getTarget().getClass();
-        long timeOutMillis = providerRetryCheck.timeOutMillis();
+    @Pointcut("@annotation(com.lianjia.sinan.qc.annotation.DubboProviderRetryCheck)")
+    public void pointcut() {
+
+    }
+
+    @Before(value = "pointcut() && @annotation(check)")
+    public void providerRetryCheck(JoinPoint joinPoint, DubboProviderRetryCheck check) {
+
+        Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
+
+        // dubbo service class (interface)
+        Class<?> serviceClass = method.getDeclaringClass();
+        long expiredMillis = check.expiredMillis();
         String methodName = method.getName();
-    
-        String methodKey = getMethodKey(serviceClass, methodName);
-        // 获取 来自客户端的传参
-        String uuid = RpcContext.getContext().getAttachment(methodKey);
-    
-        if (ShardedRedisUtil.getInstance().exists(uuid)) {
-            // 若 key已存在，即重复调用，所以直接返回
-            return null;
-        }
-        // 否则，设置key值并设定过期时间
-        Object result = null;
+
+        String methodKey = KeyUtil.getMethodKey(serviceClass, methodName);
+
+        logger.info("Dubbo providerRetryCheck parameters, method={}, expiredMillis={}", methodKey, expiredMillis);
         try {
-            result = proceedingJoinPoint.proceed();
-        } catch (Throwable t) {
-            // exception logic
-        } 
-    //    finally {
-            // 不能主动删除，因为 删除后，若还有重试 就有问题，可能存在很多无用key
-    //        ShardedRedisUtil.getInstance().del(methodKey);
-    //    }
-        return result;
+            // uuid
+            String uuid = RpcContext.getContext().getAttachment(methodKey);
+
+            if (null != uuid) {
+
+                String redisKey = KeyUtil.getRedisKey(uuid);
+
+                if (cacher.exists(redisKey)) {
+                    logger.info("Dubbo providerRetryCheck method[{}] repeat call then return", methodKey);
+                    // 若 key 存在，那么认为是 重试（重复调用）
+                    throw new DubboRetryException("method[" + methodKey + "] repeat execute");
+                }
+                // 否则，设置key值并设定过期时间
+                cacher.set(redisKey, uuid, Long.valueOf(expiredMillis).intValue());
+            }
+
+        } catch (Exception e) {
+            logger.error("Dubbo providerRetryCheck exception in [{}]", methodKey, e);
+            if ("DubboRetryException".equalsIgnoreCase(e.getClass().getSimpleName())) {
+                throw e;
+            }
+        }
+
     }
-     
-    private String getMethodKey(Class<?> serviceClass, String methodName) {
-        return Joiner.on(".").useForNull("").join(serviceClass.getName(), methodName, ".uuid");
-    }
+
     
 服务端使用：
 
