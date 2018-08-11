@@ -1,12 +1,12 @@
 ---
 published: true
 layout: post
-title: Retry超时重试防止数据重复小记
+title: Dubbo-Retry超时重试防止数据重复小记
 category: Java
 tags: Java Dubbo
 time: 2018.08.06 18:21:00
 keywords: 
-description: Retry超时重试防止数据重复小记
+description: Dubbo-Retry超时重试防止数据重复小记
 
 ---
 
