@@ -4,7 +4,7 @@ layout: post
 title: Prometheus监控之Micrometer支持多端点URL
 category: Java
 tags: Java Prometheus Micrometer
-time: 2018.08.06 18:21:00
+time: 2019.08.27 18:21:00
 keywords: 
 description: Prometheus监控之Micrometer支持多端点URL
 
