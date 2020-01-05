@@ -19,7 +19,7 @@ url: http://forwhy.cf
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
-gavatar: /public/img/author.jpg
+gavatar: /public/img/pylogo.png
 favicon: /public/img/pylogo.png
 
 # google analytics 设置
