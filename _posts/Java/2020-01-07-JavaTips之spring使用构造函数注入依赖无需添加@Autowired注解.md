@@ -68,4 +68,29 @@ public class MyService {
 }
 ```
 
+摘一段sharding jdbc 3.1版本的样例
+
+```java
+@Configuration
+@EnableConfigurationProperties({
+        SpringBootShardingRuleConfigurationProperties.class, SpringBootMasterSlaveRuleConfigurationProperties.class, 
+        SpringBootConfigMapConfigurationProperties.class, SpringBootPropertiesConfigurationProperties.class
+})
+@RequiredArgsConstructor
+public class SpringBootConfiguration implements EnvironmentAware {
+    
+    private final SpringBootShardingRuleConfigurationProperties shardingProperties;
+    
+    private final SpringBootMasterSlaveRuleConfigurationProperties masterSlaveProperties;
+    
+    private final SpringBootConfigMapConfigurationProperties configMapProperties;
+    
+    private final SpringBootPropertiesConfigurationProperties propMapProperties;
+    
+    private final Map<String, DataSource> dataSourceMap = new LinkedHashMap<>();
+
+    // ...
+}
+```
+
 
