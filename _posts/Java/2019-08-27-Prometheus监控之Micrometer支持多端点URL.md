@@ -21,6 +21,10 @@ description: Prometheus监控之Micrometer支持多端点URL
 
 那么就需要添加多个URL，该如何做呢？
 
+我们要达到的目标只有一个：
+
+- 不同的业务可以使用不同的url暴露指标，即 同一个服务 可以暴露不同的URL统计指标，各个URL中的指标互不影响
+
 2、实践
 
 查看micrometer源码（主要是`PrometheusMetricsExportAutoConfiguration`此类)，可以知道默认端点`prometheus`的初始化流程，
@@ -304,5 +308,15 @@ ok，下次如果想添加额外的，那么只需要创建和端点`a`一样的
 当然，上述只是很潦草的代码，各位可以看着自己改改，更适合自己的项目！
 
 源码见：https://github.com/kute/prometheus-demo/
+
+<hr />
+
+接下来：
+
+> 虽然上述实现了目标，但是 新增业务的时候 还是需要编写少量的代码或者配置才能生效，那么如何 能够在 运行时 动态创建单独的指标URL呢？
+
+> 举例： 通过请求下 API 就自动创建了指标URL
+
+> 有时间再梳理下放上来
 
 有问题及时联系
