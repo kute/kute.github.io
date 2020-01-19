@@ -23,7 +23,8 @@ description: Prometheus监控之Micrometer支持多端点URL（二）
 
 只写 主要逻辑
 
-		public void doRegistMetricsUrl(String busiCode) throws Exception {
+```
+public void doRegistMetricsUrl(String busiCode) throws Exception {
         log.info("doRegistMetricsUrl param for busiCode = {}", busiCode);
 
         ConfigurableListableBeanFactory beanFactory = ((ConfigurableApplicationContext) applicationContext).getBeanFactory();
@@ -82,6 +83,7 @@ description: Prometheus监控之Micrometer支持多端点URL（二）
                 endPointBeanName, endPointId, prometheusMeterRegistryBeanName, propertiesConfigAdapterBeanName, prometheusPropertiesBeanName,
                 collectorRegistryBeanName, busiCode);
     }
+```
 
 
 简单说下上述的逻辑：
